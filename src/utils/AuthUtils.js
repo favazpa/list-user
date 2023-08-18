@@ -1,5 +1,5 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import {Alert} from 'react-native';
+import {showToast} from './ToastUtils';
 
 const USER_STORAGE_KEY = 'users';
 
@@ -22,7 +22,6 @@ export const handleLogin = async (
   password,
   navigation,
 ) => {
-  console.log('contactIdentifier', contactIdentifier);
   try {
     const usersString = await AsyncStorage.getItem(USER_STORAGE_KEY);
     const usersData = usersString ? JSON.parse(usersString) : [];
@@ -40,17 +39,49 @@ export const handleLogin = async (
               userData.password === password,
           );
 
-    console.log('user', user);
-
     if (user) {
-      Alert.alert('Success', 'Login successful!');
+      showToast('success', 'Login successful!');
       await AsyncStorage.setItem('login', 'true');
       navigation.replace('List');
     } else {
-      Alert.alert('Error', 'Invalid username or password');
+      showToast('error', 'Invalid username or password');
     }
   } catch (error) {
     console.error('Error logging in:', error);
+  }
+};
+
+export const handleSignUp = async (
+  email,
+  phoneNumber,
+  password,
+  navigation,
+) => {
+  try {
+    const usersString = await AsyncStorage.getItem(USER_STORAGE_KEY);
+    const usersData = usersString ? JSON.parse(usersString) : [];
+
+    const isPhoneNumberTaken = usersData.some(
+      userData => userData.phoneNumber === phoneNumber,
+    );
+    const isEmailTaken = usersData.some(userData => userData.email === email);
+
+    if (isPhoneNumberTaken) {
+      showToast('error', 'Phone number is already taken');
+    } else if (isEmailTaken) {
+      showToast('error', 'Email address is already taken');
+    } else {
+      const newUser = {password, phoneNumber, email};
+      const updatedUsers = [...usersData, newUser];
+      await AsyncStorage.setItem(
+        USER_STORAGE_KEY,
+        JSON.stringify(updatedUsers),
+      );
+      showToast('success', 'Signed up Successfully');
+      navigation.navigate('Login');
+    }
+  } catch (error) {
+    console.error('Error signing up:', error);
   }
 };
 

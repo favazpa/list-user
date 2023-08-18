@@ -8,7 +8,7 @@ import {
 } from 'react-native';
 import CountryPicker from 'react-native-country-picker-modal';
 import Icon from 'react-native-vector-icons/FontAwesome';
-import {handleSignUp} from '../utils/UserManager';
+import {handleSignUp} from '../utils/AuthUtils';
 
 const SignUpScreen = ({navigation}) => {
   const [email, setEmail] = useState('');
@@ -163,6 +163,7 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     paddingHorizontal: 20,
     marginBottom: 30,
+    color: 'black',
   },
   phoneInput: {
     flex: 1,
@@ -180,6 +181,7 @@ const styles = StyleSheet.create({
   },
   passwordInput: {
     flex: 1,
+    color: 'black',
   },
   eyeIconContainer: {
     marginLeft: 10,
@@ -195,6 +197,7 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     paddingHorizontal: 20,
     marginBottom: 30,
+    color: 'black',
   },
   countryPicker: {
     borderWidth: 1,

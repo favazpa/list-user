@@ -5,6 +5,7 @@ import LoginScreen from '../screens/LoginScreen';
 import SignUpScreen from '../screens/SignUpScreen';
 import ListScreen from '../screens/ListScreen';
 import SplashScreen from '../screens/SplashScreen';
+import Toast from 'react-native-toast-message';
 
 const Stack = createStackNavigator();
 
@@ -33,6 +34,7 @@ const Navigation = () => {
           options={{headerShown: false}}
         />
       </Stack.Navigator>
+      <Toast />
     </NavigationContainer>
   );
 };

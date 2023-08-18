@@ -18,25 +18,13 @@ const LoginWithPhoneNumber = ({
   };
 
   const handleCountrySelect = country => {
-    console.log('country', country);
     setSelectedCountry(country);
   };
 
   return (
     <View style={{width: '100%'}}>
       <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-        <View
-          style={{
-            borderWidth: 1,
-            borderColor: '#e5e8e8',
-            paddingHorizontal: 10,
-            height: 50,
-            justifyContent: 'center',
-            alignItems: 'center',
-            flexDirection: 'row',
-            width: '25%',
-            borderRadius: 5,
-          }}>
+        <View style={styles.countryCodeContainer}>
           <CountryPicker
             withFilter
             withFlagButton
@@ -101,6 +89,7 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     paddingHorizontal: 20,
     marginBottom: 30,
+    color: 'black',
   },
   phoneInput: {
     flex: 1,
@@ -118,11 +107,23 @@ const styles = StyleSheet.create({
   },
   passwordInput: {
     flex: 1,
+    color: 'black',
   },
   eyeIconContainer: {
     marginLeft: 10,
   },
   arrowIcon: {
     marginHorizontal: 4,
+  },
+  countryCodeContainer: {
+    borderWidth: 1,
+    borderColor: '#e5e8e8',
+    paddingHorizontal: 10,
+    height: 50,
+    justifyContent: 'center',
+    alignItems: 'center',
+    flexDirection: 'row',
+    width: '25%',
+    borderRadius: 5,
   },
 });
