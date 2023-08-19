@@ -1,5 +1,6 @@
 import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import React from 'react';
+import colors from '../themes/Colors';
 
 const CustomTabView = ({activeTab, handleTabChange}) => {
   return (
@@ -37,7 +38,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     marginBottom: 50,
     padding: 5,
-    borderColor: '#e5e8e8',
+    borderColor: colors.borderColor,
     borderWidth: 1,
     width: '100%',
     height: 50,
@@ -47,20 +48,20 @@ const styles = StyleSheet.create({
   tab: {
     width: '48%',
     padding: 10,
-    backgroundColor: '#FFFFFF',
+    backgroundColor: colors.background,
     borderRadius: 3,
     justifyContent: 'center',
     alignItems: 'center',
   },
   activeTab: {
-    backgroundColor: '#34A2B1',
+    backgroundColor: colors.primary,
   },
   tabText: {
     fontSize: 14,
     fontWeight: '700',
-    color: '#A2ABC3',
+    color: colors.placeholder,
   },
   activeTabText: {
-    color: 'white',
+    color: colors.background,
   },
 });

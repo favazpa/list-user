@@ -1,9 +1,11 @@
 import React, {useState} from 'react';
-import {View, Text, TouchableOpacity, StyleSheet} from 'react-native';
+import {View, StyleSheet} from 'react-native';
 import {handleLogin} from '../utils/AuthUtils';
 import LoginWithPhoneNumber from '../components/LoginWithPhoneNumber';
 import LoginWIthEmail from '../components/LoginWIthEmail';
 import CustomTabView from '../components/CustomTabView';
+import CustomButton from '../components/CustomButton';
+import colors from '../themes/Colors';
 
 const LoginScreen = ({navigation}) => {
   const [activeTab, setActiveTab] = useState('email');
@@ -56,12 +58,11 @@ const LoginScreen = ({navigation}) => {
           />
         )}
 
-        <TouchableOpacity
-          disabled={contactIdentifier && password ? false : true}
-          style={[
-            styles.loginButton,
-            contactIdentifier && password && {backgroundColor: '#34A2B1'},
-          ]}
+        <CustomButton
+          isDisabled={contactIdentifier && password ? false : true}
+          style={
+            contactIdentifier && password && {backgroundColor: colors.primary}
+          }
           onPress={() =>
             handleLogin(
               activeTab === 'phone' ? phoneNumber : contactIdentifier,
@@ -69,15 +70,15 @@ const LoginScreen = ({navigation}) => {
               password,
               navigation,
             )
-          }>
-          <Text style={styles.loginButtonText}>Login</Text>
-        </TouchableOpacity>
+          }
+          label={'Login'}
+        />
 
-        <TouchableOpacity
-          style={[styles.loginButton, {backgroundColor: '#34A2B1'}]}
-          onPress={() => navigation.navigate('SignUp')}>
-          <Text style={styles.loginButtonText}>SignUp</Text>
-        </TouchableOpacity>
+        <CustomButton
+          style={{backgroundColor: colors.primary}}
+          onPress={() => navigation.navigate('SignUp')}
+          label={'Sign Up'}
+        />
       </View>
     </View>
   );
@@ -89,29 +90,10 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     padding: 20,
-    backgroundColor: '#FFFFFF',
+    backgroundColor: colors.background,
   },
   inputContainer: {
     width: '100%',
-  },
-  input: {
-    marginBottom: 10,
-    padding: 10,
-    borderWidth: 1,
-    borderColor: 'gray',
-    borderRadius: 5,
-  },
-  loginButton: {
-    backgroundColor: '#DEE1E6',
-    padding: 15,
-    alignItems: 'center',
-    borderRadius: 5,
-    marginVertical: 15,
-  },
-  loginButtonText: {
-    color: 'white',
-    fontSize: 16,
-    fontWeight: 'bold',
   },
 });
 

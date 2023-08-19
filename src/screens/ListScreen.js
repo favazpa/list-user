@@ -1,9 +1,8 @@
 import React, {useEffect, useState} from 'react';
-import {StyleSheet, Text, View, FlatList, TouchableOpacity} from 'react-native';
+import {StyleSheet, Text, View, FlatList} from 'react-native';
 import {getUsers} from '../utils/UserManager';
 import ListItem from '../components/ListItem';
-import Icon from 'react-native-vector-icons/SimpleLineIcons';
-import {handleLogOut} from '../utils/AuthUtils';
+import CustomNavigationHeader from '../components/CustomNavigationHeader';
 
 const ListHeaderComponent = () => {
   return <Text style={styles.header}>Select Profile</Text>;
@@ -29,21 +28,7 @@ const UserListScreen = ({navigation}) => {
 
   return (
     <View style={styles.container}>
-      <View
-        style={{
-          width: '100%',
-          backgroundColor: '#34A2B1',
-          height: 50,
-          alignItems: 'center',
-          gap: 10,
-          padding: 10,
-          flexDirection: 'row',
-        }}>
-        <TouchableOpacity onPress={() => handleLogOut(navigation)}>
-          <Icon name="logout" size={20} color="white" />
-        </TouchableOpacity>
-        <Text style={{color: 'white', fontSize: 15}}>Logout</Text>
-      </View>
+      <CustomNavigationHeader navigation={navigation} />
       <FlatList
         data={displayedUsers}
         ListHeaderComponent={ListHeaderComponent}
@@ -62,54 +47,9 @@ export default UserListScreen;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    // padding: 16,
     backgroundColor: '#EEEFF4',
   },
-  userItem: {
-    width: '100%',
-    flexDirection: 'row',
-    alignItems: 'center',
-    marginBottom: 25,
-    backgroundColor: '#fff',
-    borderRadius: 8,
-    padding: 10,
-    shadowColor: '#000',
-    shadowOffset: {
-      width: 0,
-      height: 3,
-    },
-    shadowOpacity: 0.27,
-    shadowRadius: 4.65,
 
-    elevation: 6,
-  },
-  profileIcon: {
-    marginRight: 16,
-    backgroundColor: '#F6F7F9',
-    borderRadius: 25,
-  },
-  userInfo: {
-    flex: 1,
-  },
-  userName: {
-    fontSize: 15,
-    fontWeight: 'bold',
-    color: 'black',
-  },
-  userDetails: {
-    fontSize: 13,
-    fontWeight: '400',
-    color: 'black',
-  },
-  iconContainer: {
-    width: 50,
-    height: 50,
-    borderRadius: 50,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F6F7F9',
-    marginHorizontal: 10,
-  },
   header: {
     fontSize: 17,
     fontWeight: 'bold',

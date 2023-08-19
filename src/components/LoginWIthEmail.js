@@ -1,12 +1,7 @@
-import {
-  StyleSheet,
-  Text,
-  TextInput,
-  View,
-  TouchableOpacity,
-} from 'react-native';
+import {StyleSheet, TextInput, View} from 'react-native';
 import React, {useState} from 'react';
-import Icon from 'react-native-vector-icons/FontAwesome';
+import SecureTextInput from './SecureTextInput';
+import colors from '../themes/Colors';
 
 const LoginWIthEmail = ({
   contactIdentifier,
@@ -21,33 +16,21 @@ const LoginWIthEmail = ({
   };
 
   return (
-    <View style={{width: '100%'}}>
+    <View style={styles.container}>
       <TextInput
         placeholder="Enter your email"
-        placeholderTextColor={'#A2ABC3'}
+        placeholderTextColor={colors.placeholder}
         value={contactIdentifier}
         onChangeText={txt => handleIdentifierChange(txt)}
         style={styles.textInputContainer}
       />
-      <View style={styles.passwordContainer}>
-        <TextInput
-          placeholder="Enter your password"
-          placeholderTextColor={'#A2ABC3'}
-          value={password}
-          onChangeText={txt => handlePasswordChange(txt)}
-          style={styles.passwordInput}
-          secureTextEntry={!isPasswordVisible}
-        />
-        <TouchableOpacity
-          onPress={togglePasswordVisibility}
-          style={styles.eyeIconContainer}>
-          <Icon
-            name={isPasswordVisible ? 'eye-slash' : 'eye'}
-            size={20}
-            color="#A2ABC3"
-          />
-        </TouchableOpacity>
-      </View>
+
+      <SecureTextInput
+        password={password}
+        isPasswordVisible={isPasswordVisible}
+        togglePasswordVisibility={togglePasswordVisibility}
+        handleInputChange={handlePasswordChange}
+      />
     </View>
   );
 };
@@ -57,7 +40,7 @@ export default LoginWIthEmail;
 const styles = StyleSheet.create({
   textInputContainer: {
     borderWidth: 1,
-    borderColor: '#e5e8e8',
+    borderColor: colors.borderColor,
     width: '100%',
     height: 50,
     borderRadius: 5,
@@ -65,21 +48,5 @@ const styles = StyleSheet.create({
     marginBottom: 30,
     color: 'black',
   },
-  passwordContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    borderWidth: 1,
-    borderColor: '#e5e8e8',
-    width: '100%',
-    height: 50,
-    borderRadius: 5,
-    paddingHorizontal: 20,
-  },
-  passwordInput: {
-    flex: 1,
-    color: 'black',
-  },
-  eyeIconContainer: {
-    marginLeft: 10,
-  },
+  container: {width: '100%'},
 });
