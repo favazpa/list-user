@@ -35,6 +35,7 @@ const UserListScreen = ({navigation}) => {
         onEndReachedThreshold={0.01}
         onEndReached={showNextBatch}
         contentContainerStyle={styles.itemContainer}
+        style={{flex: 1}}
         keyExtractor={(item, index) => index.toString()}
         renderItem={({item}) => <ListItem details={item} />}
       />
@@ -56,5 +57,5 @@ const styles = StyleSheet.create({
     color: 'black',
     marginBottom: 25,
   },
-  itemContainer: {flex: 1, padding: 20},
+  itemContainer: {padding: 20},
 });
