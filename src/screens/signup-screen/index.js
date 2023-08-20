@@ -1,34 +1,36 @@
 import React, {useState} from 'react';
 import {View, StyleSheet, TextInput} from 'react-native';
-import {handleSignUp} from '../utils/AuthUtils';
-import PhoneInputWithCountryCode from '../components/PhoneInputWithCountryCode';
-import SecureTextInput from '../components/SecureTextInput';
-import CustomButton from '../components/CustomButton';
-import colors from '../themes/Colors';
+import {handleSignUp} from '../../utils/AuthUtils';
+import PhoneInputWithCountryCode from '../../components/PhoneInputWithCountryCode';
+import SecureTextInput from '../../components/SecureTextInput';
+import CustomButton from '../../components/CustomButton';
+import Colors from '../../themes/Colors';
+import CustomTextInput from '../../components/CustomTextInput';
+import TextConstants from '../../constants/TextConstants';
+
+const INDIAN_CALLING_CODE_DETAILS = {
+  callingCode: ['91'],
+  cca2: 'IN',
+  flag: 'flag-in',
+};
 
 const SignUpScreen = ({navigation}) => {
   const [email, setEmail] = useState('');
   const [phoneNumber, setPhoneNumber] = useState('');
   const [password, setPassword] = useState('');
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
-  const [selectedCountry, setSelectedCountry] = useState({
-    callingCode: ['91'],
-    cca2: 'IN',
-    currency: ['INR'],
-    flag: 'flag-in',
-    name: 'India',
-    region: 'Asia',
-    subregion: 'Southern Asia',
-  });
+  const [selectedCountry, setSelectedCountry] = useState(
+    INDIAN_CALLING_CODE_DETAILS,
+  );
 
   const phoneNumberWithCountryCode = `+${selectedCountry.callingCode[0]}${phoneNumber}`;
 
   const handleInputChange = (txt, state) => {
-    if (state === 'email') {
+    if (state === TextConstants.email) {
       setEmail(txt);
-    } else if (state === 'phoneNumber') {
+    } else if (state === TextConstants.phoneNumber) {
       setPhoneNumber(txt);
-    } else if (state === 'password') {
+    } else if (state === TextConstants.password) {
       setPassword(txt);
     }
   };
@@ -45,12 +47,10 @@ const SignUpScreen = ({navigation}) => {
     <View style={styles.container}>
       <View style={styles.subContainer}>
         <View style={styles.inputContainer}>
-          <TextInput
-            placeholder="Enter your email"
-            placeholderTextColor={colors.placeholder}
+          <CustomTextInput
+            placeholder={TextConstants.enterYourEmail}
             value={email}
-            onChangeText={txt => handleInputChange(txt, 'email')}
-            style={styles.emailTextInputContainer}
+            onChangeText={txt => handleInputChange(txt, TextConstants.email)}
           />
           <PhoneInputWithCountryCode
             phoneNumber={phoneNumber}
@@ -70,7 +70,7 @@ const SignUpScreen = ({navigation}) => {
           style={
             password &&
             phoneNumber &&
-            email && {backgroundColor: colors.primary}
+            email && {backgroundColor: Colors.primary}
           }
           isDisabled={password && phoneNumber && email ? false : true}
           onPress={() =>
@@ -81,7 +81,7 @@ const SignUpScreen = ({navigation}) => {
               navigation,
             )
           }
-          label={'SignUp'}
+          label={TextConstants.signupButtonLabel}
         />
       </View>
     </View>
@@ -94,14 +94,14 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     padding: 20,
-    backgroundColor: colors.background,
+    backgroundColor: Colors.background,
   },
   subContainer: {
     width: '100%',
   },
   emailTextInputContainer: {
     borderWidth: 1,
-    borderColor: colors.borderColor,
+    borderColor: Colors.borderColor,
     width: '100%',
     height: 50,
     borderRadius: 5,

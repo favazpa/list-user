@@ -1,8 +1,8 @@
 import React, {useEffect, useState} from 'react';
 import {StyleSheet, Text, View, FlatList} from 'react-native';
-import {getUsers} from '../utils/UserManager';
-import ListItem from '../components/ListItem';
-import CustomNavigationHeader from '../components/CustomNavigationHeader';
+import {getUsers} from '../../utils/UserManager';
+import ListItem from './components/ListItem';
+import CustomNavigationHeader from './components/CustomNavigationHeader';
 
 const ListHeaderComponent = () => {
   return <Text style={styles.header}>Select Profile</Text>;

@@ -1,4 +1,4 @@
-const colors = {
+const Colors = {
   primary: '#34A2B1',
   background: '#FFFFFF',
   disabledButton: '#DEE1E6',
@@ -8,4 +8,4 @@ const colors = {
   profileIcon: '#F6F7F9',
 };
 
-export default colors;
+export default Colors;

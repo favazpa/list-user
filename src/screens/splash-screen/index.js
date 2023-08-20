@@ -1,6 +1,6 @@
 import {StyleSheet, View} from 'react-native';
 import React, {useEffect} from 'react';
-import {checkLoginStatus} from '../utils/AuthUtils';
+import {checkLoginStatus} from '../../utils/AuthUtils';
 
 const SplashScreen = ({navigation}) => {
   useEffect(() => {

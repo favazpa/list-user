@@ -1,8 +1,8 @@
 import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import React from 'react';
 import Icon from 'react-native-vector-icons/SimpleLineIcons';
-import {handleLogOut} from '../utils/AuthUtils';
-import colors from '../themes/Colors';
+import {handleLogOut} from '../../../utils/AuthUtils';
+import Colors from '../../../themes/Colors';
 
 const CustomNavigationHeader = ({navigation}) => {
   return (
@@ -20,7 +20,7 @@ export default CustomNavigationHeader;
 const styles = StyleSheet.create({
   navigationHeader: {
     width: '100%',
-    backgroundColor: colors.primary,
+    backgroundColor: Colors.primary,
     height: 50,
     alignItems: 'center',
     gap: 10,

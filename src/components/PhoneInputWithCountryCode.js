@@ -2,7 +2,9 @@ import {StyleSheet, TextInput, View} from 'react-native';
 import React from 'react';
 import CountryPicker from 'react-native-country-picker-modal';
 import Icon from 'react-native-vector-icons/FontAwesome';
-import colors from '../themes/Colors';
+import Colors from '../themes/Colors';
+import CustomTextInput from './CustomTextInput';
+import TextConstants from '../constants/TextConstants';
 
 const PhoneInputWithCountryCode = ({
   handleCountrySelect,
@@ -27,18 +29,26 @@ const PhoneInputWithCountryCode = ({
         <Icon
           name="chevron-down"
           size={10}
-          color={colors.placeholder}
+          color={Colors.placeholder}
           style={styles.arrowIcon}
         />
       </View>
 
-      <TextInput
+      {/* <TextInput
         placeholder="Phone number"
-        placeholderTextColor={colors.placeholder}
+        placeholderTextColor={Colors.placeholder}
         style={styles.phoneInput}
         keyboardType="phone-pad"
         value={phoneNumber}
         onChangeText={txt => handleInputChange(txt, 'phoneNumber')}
+      /> */}
+
+      <CustomTextInput
+        placeholder={'Phone number'}
+        value={phoneNumber}
+        onChangeText={txt => handleInputChange(txt, TextConstants.phoneNumber)}
+        style={styles.phoneInput}
+        keyboardType={'phone-pad'}
       />
     </View>
   );
@@ -53,28 +63,17 @@ const styles = StyleSheet.create({
   },
   countryPicker: {
     borderWidth: 1,
-    borderColor: colors.placeholder,
+    borderColor: Colors.borderColor,
     paddingHorizontal: 10,
     height: 50,
     justifyContent: 'center',
     alignItems: 'center',
     flexDirection: 'row',
-    width: '25%',
+    width: '28%',
     borderRadius: 5,
   },
   arrowIcon: {
     marginHorizontal: 4,
   },
-  phoneInput: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    borderWidth: 1,
-    borderColor: colors.borderColor,
-    width: '72%',
-    height: 50,
-    borderRadius: 5,
-    paddingHorizontal: 20,
-    marginBottom: 30,
-    color: 'black',
-  },
+  phoneInput: {flexDirection: 'row', alignItems: 'center', width: '70%'},
 });

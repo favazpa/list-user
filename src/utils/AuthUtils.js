@@ -2,10 +2,11 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import {showToast} from './ToastUtils';
 
 const USER_STORAGE_KEY = 'users';
+const LOGIN_STORAGE_KEY = 'login';
 
 export const checkLoginStatus = async navigation => {
   try {
-    const login = await AsyncStorage.getItem('login');
+    const login = await AsyncStorage.getItem(LOGIN_STORAGE_KEY);
     if (login === 'true') {
       navigation.replace('List');
     } else {
@@ -41,7 +42,7 @@ export const handleLogin = async (
 
     if (user) {
       showToast('success', 'Login successful!');
-      await AsyncStorage.setItem('login', 'true');
+      await AsyncStorage.setItem(LOGIN_STORAGE_KEY, 'true');
       navigation.replace('List');
     } else {
       showToast('error', 'Invalid username or password');
@@ -87,7 +88,7 @@ export const handleSignUp = async (
 
 export const handleLogOut = async navigation => {
   try {
-    await AsyncStorage.setItem('login', 'false');
+    await AsyncStorage.setItem(LOGIN_STORAGE_KEY, 'false');
     navigation.replace('Login');
   } catch (error) {
     console.error('Error logging out:', error);

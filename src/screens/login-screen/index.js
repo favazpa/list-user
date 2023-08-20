@@ -1,24 +1,21 @@
 import React, {useState} from 'react';
 import {View, StyleSheet} from 'react-native';
-import {handleLogin} from '../utils/AuthUtils';
-import LoginWithPhoneNumber from '../components/LoginWithPhoneNumber';
-import LoginWIthEmail from '../components/LoginWIthEmail';
-import CustomTabView from '../components/CustomTabView';
-import CustomButton from '../components/CustomButton';
-import colors from '../themes/Colors';
+import {handleLogin} from '../../utils/AuthUtils';
+import LoginWithPhoneNumber from './components/LoginWithPhoneNumber';
+import LoginWIthEmail from './components/LoginWIthEmail';
+import CustomTabView from './components/CustomTabView';
+import CustomButton from '../../components/CustomButton';
+import Colors from '../../themes/Colors';
+import TextConstants from '../../constants/TextConstants';
 
 const LoginScreen = ({navigation}) => {
-  const [activeTab, setActiveTab] = useState('email');
+  const [activeTab, setActiveTab] = useState(TextConstants.email);
   const [contactIdentifier, setContactIdentifier] = useState('');
   const [password, setPassword] = useState('');
   const [selectedCountry, setSelectedCountry] = useState({
     callingCode: ['91'],
     cca2: 'IN',
-    currency: ['INR'],
     flag: 'flag-in',
-    name: 'India',
-    region: 'Asia',
-    subregion: 'Southern Asia',
   });
 
   const phoneNumber = `+${selectedCountry.callingCode[0]}${contactIdentifier}`;
@@ -61,7 +58,7 @@ const LoginScreen = ({navigation}) => {
         <CustomButton
           isDisabled={contactIdentifier && password ? false : true}
           style={
-            contactIdentifier && password && {backgroundColor: colors.primary}
+            contactIdentifier && password && {backgroundColor: Colors.primary}
           }
           onPress={() =>
             handleLogin(
@@ -71,13 +68,13 @@ const LoginScreen = ({navigation}) => {
               navigation,
             )
           }
-          label={'Login'}
+          label={TextConstants.loginButtonLabel}
         />
 
         <CustomButton
-          style={{backgroundColor: colors.primary}}
+          style={{backgroundColor: Colors.primary}}
           onPress={() => navigation.navigate('SignUp')}
-          label={'Sign Up'}
+          label={TextConstants.signupButtonLabel}
         />
       </View>
     </View>
@@ -90,7 +87,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     padding: 20,
-    backgroundColor: colors.background,
+    backgroundColor: Colors.background,
   },
   inputContainer: {
     width: '100%',

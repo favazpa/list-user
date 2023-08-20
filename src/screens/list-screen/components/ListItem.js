@@ -1,13 +1,13 @@
 import {StyleSheet, Text, View} from 'react-native';
 import React from 'react';
 import Icon from 'react-native-vector-icons/FontAwesome6';
-import colors from '../themes/Colors';
+import Colors from '../../../themes/Colors';
 
 const ListItem = ({details}) => {
   return (
     <View style={styles.userItem}>
       <View style={styles.iconContainer}>
-        <Icon color={colors.placeholder} name="user" size={30} />
+        <Icon color={Colors.placeholder} name="user" size={30} />
       </View>
       <View style={styles.userInfo}>
         <Text style={styles.userName}>Developer Demo</Text>
@@ -26,7 +26,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     marginBottom: 25,
-    backgroundColor: colors.background,
+    backgroundColor: Colors.background,
     borderRadius: 8,
     padding: 10,
     shadowColor: '#000',
@@ -41,7 +41,7 @@ const styles = StyleSheet.create({
   },
   profileIcon: {
     marginRight: 16,
-    backgroundColor: colors.profileIcon,
+    backgroundColor: Colors.profileIcon,
     borderRadius: 25,
   },
   userInfo: {
@@ -63,7 +63,7 @@ const styles = StyleSheet.create({
     borderRadius: 50,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: colors.profileIcon,
+    backgroundColor: Colors.profileIcon,
     marginHorizontal: 10,
   },
 });

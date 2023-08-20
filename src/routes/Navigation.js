@@ -1,11 +1,11 @@
 import React from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
-import LoginScreen from '../screens/LoginScreen';
-import SignUpScreen from '../screens/SignUpScreen';
-import ListScreen from '../screens/ListScreen';
-import SplashScreen from '../screens/SplashScreen';
 import Toast from 'react-native-toast-message';
+import SplashScreen from '../screens/splash-screen';
+import LoginScreen from '../screens/login-screen';
+import SignUpScreen from '../screens/signup-screen';
+import UserListScreen from '../screens/list-screen';
 
 const Stack = createStackNavigator();
 
@@ -30,7 +30,7 @@ const Navigation = () => {
         />
         <Stack.Screen
           name="List"
-          component={ListScreen}
+          component={UserListScreen}
           options={{headerShown: false}}
         />
       </Stack.Navigator>

@@ -1,28 +1,29 @@
 import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import React from 'react';
-import colors from '../themes/Colors';
+import Colors from '../../../themes/Colors';
+import TextConstants from '../../../constants/TextConstants';
 
 const CustomTabView = ({activeTab, handleTabChange}) => {
   return (
     <View style={styles.tabsContainer}>
       <TouchableOpacity
-        style={[styles.tab, activeTab === 'email' && styles.activeTab]}
-        onPress={() => handleTabChange('email')}>
+        style={[styles.tab, activeTab === TextConstants.email && styles.activeTab]}
+        onPress={() => handleTabChange(TextConstants.email)}>
         <Text
           style={[
             styles.tabText,
-            activeTab === 'email' && styles.activeTabText,
+            activeTab === TextConstants.email && styles.activeTabText,
           ]}>
           Email
         </Text>
       </TouchableOpacity>
       <TouchableOpacity
-        style={[styles.tab, activeTab === 'phone' && styles.activeTab]}
-        onPress={() => handleTabChange('phone')}>
+        style={[styles.tab, activeTab === TextConstants.phone && styles.activeTab]}
+        onPress={() => handleTabChange(TextConstants.phone)}>
         <Text
           style={[
             styles.tabText,
-            activeTab === 'phone' && styles.activeTabText,
+            activeTab ===TextConstants.phone && styles.activeTabText,
           ]}>
           Phone Number
         </Text>
@@ -38,7 +39,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     marginBottom: 50,
     padding: 5,
-    borderColor: colors.borderColor,
+    borderColor: Colors.borderColor,
     borderWidth: 1,
     width: '100%',
     height: 50,
@@ -48,20 +49,20 @@ const styles = StyleSheet.create({
   tab: {
     width: '48%',
     padding: 10,
-    backgroundColor: colors.background,
+    backgroundColor: Colors.background,
     borderRadius: 3,
     justifyContent: 'center',
     alignItems: 'center',
   },
   activeTab: {
-    backgroundColor: colors.primary,
+    backgroundColor: Colors.primary,
   },
   tabText: {
     fontSize: 14,
     fontWeight: '700',
-    color: colors.placeholder,
+    color: Colors.placeholder,
   },
   activeTabText: {
-    color: colors.background,
+    color: Colors.background,
   },
 });

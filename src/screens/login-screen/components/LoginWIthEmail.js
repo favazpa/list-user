@@ -1,7 +1,9 @@
 import {StyleSheet, TextInput, View} from 'react-native';
 import React, {useState} from 'react';
-import SecureTextInput from './SecureTextInput';
-import colors from '../themes/Colors';
+import SecureTextInput from '../../../components/SecureTextInput';
+import Colors from '../../../themes/Colors';
+import CustomTextInput from '../../../components/CustomTextInput';
+import TextConstants from '../../../constants/TextConstants';
 
 const LoginWIthEmail = ({
   contactIdentifier,
@@ -17,12 +19,18 @@ const LoginWIthEmail = ({
 
   return (
     <View style={styles.container}>
-      <TextInput
+      {/* <TextInput
         placeholder="Enter your email"
-        placeholderTextColor={colors.placeholder}
+        placeholderTextColor={Colors.placeholder}
         value={contactIdentifier}
         onChangeText={txt => handleIdentifierChange(txt)}
         style={styles.textInputContainer}
+      /> */}
+
+      <CustomTextInput
+        placeholder={TextConstants.enterYourEmail}
+        value={contactIdentifier}
+        onChangeText={txt => handleIdentifierChange(txt)}
       />
 
       <SecureTextInput
@@ -40,7 +48,7 @@ export default LoginWIthEmail;
 const styles = StyleSheet.create({
   textInputContainer: {
     borderWidth: 1,
-    borderColor: colors.borderColor,
+    borderColor: Colors.borderColor,
     width: '100%',
     height: 50,
     borderRadius: 5,

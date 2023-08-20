@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import {StyleSheet, View} from 'react-native';
-import PhoneInputWithCountryCode from './PhoneInputWithCountryCode';
-import SecureTextInput from './SecureTextInput';
+import PhoneInputWithCountryCode from '../../../components/PhoneInputWithCountryCode';
+import SecureTextInput from '../../../components/SecureTextInput';
 
 const LoginWithPhoneNumber = ({
   contactIdentifier,

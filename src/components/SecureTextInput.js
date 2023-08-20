@@ -1,7 +1,9 @@
-import {StyleSheet, TextInput, TouchableOpacity, View} from 'react-native';
+import {StyleSheet, TouchableOpacity, View} from 'react-native';
 import React from 'react';
 import Icon from 'react-native-vector-icons/FontAwesome';
-import colors from '../themes/Colors';
+import Colors from '../themes/Colors';
+import CustomTextInput from './CustomTextInput';
+import TextConstants from '../constants/TextConstants';
 
 const SecureTextInput = ({
   password,
@@ -11,11 +13,10 @@ const SecureTextInput = ({
 }) => {
   return (
     <View style={styles.passwordContainer}>
-      <TextInput
-        placeholder="Enter your password"
-        placeholderTextColor={colors.placeholder}
+      <CustomTextInput
+        placeholder={TextConstants.enterYourPassword}
         value={password}
-        onChangeText={txt => handleInputChange(txt, 'password')}
+        onChangeText={txt => handleInputChange(txt, TextConstants.password)}
         style={styles.passwordInput}
         secureTextEntry={!isPasswordVisible}
       />
@@ -25,7 +26,7 @@ const SecureTextInput = ({
         <Icon
           name={isPasswordVisible ? 'eye-slash' : 'eye'}
           size={20}
-          color={colors.placeholder}
+          color={Colors.placeholder}
         />
       </TouchableOpacity>
     </View>
@@ -39,7 +40,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     borderWidth: 1,
-    borderColor: colors.borderColor,
+    borderColor: Colors.borderColor,
     width: '100%',
     height: 50,
     borderRadius: 5,
@@ -48,6 +49,10 @@ const styles = StyleSheet.create({
   passwordInput: {
     flex: 1,
     color: 'black',
+    borderRightWidth: 0,
+    borderLeftWidth: 0,
+    paddingHorizontal: 0,
+    marginBottom: 0,
   },
   eyeIconContainer: {
     marginLeft: 10,
